@@ -1,15 +1,25 @@
-import { useState, useEffect } from 'react';
-function useFriendStatus(friendID) {
+import React, { useState, useEffect, ChatAPI} from 'react';
+
+function useFriendStatus(props) {
   const [isOnline, setIsOnline] = useState(null);
-  function handleStatusChange(status) {
-    setIsOnline(status.isOnline);
-  }
+
   useEffect(() => {
-    ChatAPI.subscribeToFriendStatus(friendID, handleStatusChange);
-    return () => {
-      ChatAPI.unsubscribeFromFriendStatus(friendID, handleStatusChange);
+    function handleStatusChange(status) {
+      setIsOnline(status.isOnline);
+    }
+    console.log(props)
+    console.log('订阅逻辑')
+    // ChatAPI.subscribeToFriendStatus(props.friend.id, handleStatusChange);
+    // Specify how to clean up after this effect:
+    return function cleanup() {
+      console.log('清除订阅')
+      // ChatAPI.unsubscribeFromFriendStatus(props.friend.id, handleStatusChange);
     };
   });
-  return isOnline;
+
+  if (isOnline === null) {
+    return 'Loading...';
+  }
+  return isOnline ? 'Online' : 'Offline';
 }
 export default useFriendStatus
