@@ -1,6 +1,6 @@
 // State Hook 计数器栗子
 import React, { useState } from 'react';
-import useFriendStatus from "./FriendStatus"
+import useFriendStatus from "./useEffect"
 function Example() {
   // 声明一个新的叫做 “count” 的 state 变量
   // setCount 是定义的一个方法

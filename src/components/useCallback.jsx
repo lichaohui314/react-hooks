@@ -1,9 +1,9 @@
-import React, { useCallback } from "react"
+import React, { useCallback, doSomething } from "react"
 // useCallback(fn, deps) 相当于 useMemo(() => fn, deps)
 const memoizedCallback = useCallback(
   () => {
-    console.log(a,b)
-    // doSomething(a, b);
+    // console.log(1,2)
+    doSomething(1, 2);
   },
   // [a, b],
 );

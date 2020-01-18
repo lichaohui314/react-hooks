@@ -11,7 +11,7 @@ import React, { useState, useEffect } from 'react';
 function EffectHook() {
   const [count, setCount] = useState(0);
 
-  // 副作用函数,相当于 componentDidMount 和 componentDidUpdate:
+  // 副作用函数,相当于 componentDidMount 和 componentDidUpdate
   useEffect(() => {
     // 使用浏览器的 API 更新页面标题
     document.title = `You clicked ${count} times`;
